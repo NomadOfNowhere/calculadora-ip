@@ -1,3 +1,4 @@
+// Variable global con los datos de la ip
 let IPObj;
 
 function formularioIP() {
@@ -36,16 +37,22 @@ function formularioCalcular() {
    const datosDiv = document.getElementById("datos");
    let content = "";
 
+   // Se itera sobre un arreglo de objetos en la ip original que
+   // contiene a las redes subneteadas
+
    if (document.getElementById("obtenerSubredes").checked) {
        const numeroHosts = parseInt(numeroHostsInput.value);
        if (numeroHosts > 0) {
             content="";
+
+           // ****** Obtención de los datos de las subredes
            IPObj.modificarMascaraOriginal(numeroHosts);
            content += subredesText();
 
            for(let i = 0; i < IPObj.subredes.length; i++) {
                 content += subredesInfo(IPObj.subredes[i], i+1);
            }
+           // *********
        } 
        else {
            alert("Por favor, introduce un número válido de hosts.");
@@ -54,12 +61,15 @@ function formularioCalcular() {
        const nuevaMascara = parseInt(nuevaMascaraInput.value);
        if (nuevaMascara >= 0 && nuevaMascara <= 32 && nuevaMascara > IPObj.bits) {
         content="";
+
+           // ***** Obtención de los datos de las subredes
            IPObj.modificarMascaraOriginal2(nuevaMascara);
            content += subredesText();
 
            for(let i = 0; i < IPObj.subredes.length; i++) {
                 content += subredesInfo(IPObj.subredes[i], i+1);
            }
+           // *****
        } 
        else {
            alert("Por favor, introduce un número válido de bits.");
@@ -125,12 +135,12 @@ function obtenerMascaraClase(clase) {
        if (document.getElementById("obtenerSubredes").checked) {
            entradaHostsDiv.style.display = "block";
            entradaNuevaMascaraDiv.style.display = "none";
-        //    botonBuscar.style.display = "none";
+        //    botonBuscar.style.display = "none";  yo diría que el botón de buscar se muestre en todo momento
            botonCalcular.style.display = "block";
        } else if (document.getElementById("modificarMascara").checked) {
            entradaHostsDiv.style.display = "none";
            entradaNuevaMascaraDiv.style.display = "block";
-        //    botonBuscar.style.display = "none";
+        //    botonBuscar.style.display = "none";  yo diría que el botón de buscar se muestre en todo momento
            botonCalcular.style.display = "block";
        } else {
            entradaHostsDiv.style.display = "none";
@@ -139,11 +149,6 @@ function obtenerMascaraClase(clase) {
            botonCalcular.style.display = "none";
        }
    }
-
-
-
-
-
 
 
 // Función para obtener el texto de características
@@ -192,6 +197,7 @@ function obtenerTextoCaracteristicas() {
                     </ul>
                 `;
             }
+            // Si la red quiere una máscara de 31 bits
             else if(IPObj.bits == 31) {
                 return `
                 <h4>Caracteristicas de la Red</h4>
@@ -211,6 +217,7 @@ function obtenerTextoCaracteristicas() {
                 </ul>
             `;
             }
+            // Si la red requiere una máscara de 32 bits
             else if(IPObj.bits == 32) {
                     return `
                     <h4>Caracteristicas de la Red</h4>
@@ -226,6 +233,7 @@ function obtenerTextoCaracteristicas() {
     }
  }
  
+ // Función para obtener la información de las subredes que se generan
  function subredesInfo(IP, indice) {
     return `
          <ul>
@@ -240,7 +248,7 @@ function obtenerTextoCaracteristicas() {
     `;
  }
 
-
+// Características generales de la red subneteada
 function subredesText() {
     return `
     <ul>
