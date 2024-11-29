@@ -48,6 +48,7 @@ function formularioCalcular() {
            // ****** Obtención de los datos de las subredes
            IPObj.modificarMascaraOriginal(numeroHosts);
            content += subredesText();
+           content += `<h4>Subredes creadas:</h4>`
 
            for(let i = 0; i < IPObj.subredes.length; i++) {
                 content += subredesInfo(IPObj.subredes[i], i+1);
@@ -60,11 +61,12 @@ function formularioCalcular() {
    } else if (document.getElementById("modificarMascara").checked) {
        const nuevaMascara = parseInt(nuevaMascaraInput.value);
        if (nuevaMascara >= 0 && nuevaMascara <= 32 && nuevaMascara > IPObj.bits) {
-        content="";
+           content="";
 
            // ***** Obtención de los datos de las subredes
            IPObj.modificarMascaraOriginal2(nuevaMascara);
            content += subredesText();
+           content += `<h4>Subredes creadas:</h4>`
 
            for(let i = 0; i < IPObj.subredes.length; i++) {
                 content += subredesInfo(IPObj.subredes[i], i+1);
@@ -251,9 +253,9 @@ function obtenerTextoCaracteristicas() {
 // Características generales de la red subneteada
 function subredesText() {
     return `
-    <ul>
-        <li>Datos de las subredes: </li>
-        <ul>
+    
+        <h4>Datos de las subredes: </h4>
+        <ul><ul>
             <li>Necesitamos agregar----> ${IPObj.bitsAgregar} bits a la parte del host, ya que 2^${IPObj.bitsAgregar} = ${Math.pow(2, IPObj.bitsAgregar)}</li> </li>
             <li>La máscara de SubRed en formato binario es: ${IPObj.mascaraSubnetBin} </li>
             <li>La máscara de SubRed en formato decimal es: ${IPObj.mascaraSubnetDec} </li>
@@ -262,8 +264,8 @@ function subredesText() {
             <li>Total de Hosts ---> ${IPObj.totalHosts} </li>
             <li>Saltos ---> ${IPObj.saltosText} </li>
             <li> <strong> Nota: Si las cantidad de subredes son demasiadas, sólo se mostrarán las primeras 100k.</strong> </li>
-        </ul>
-    </ul>
+        </ul></ul>
+    
     <p>&nbsp;</p>
     `;
 }
