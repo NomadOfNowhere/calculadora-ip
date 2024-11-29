@@ -261,6 +261,7 @@ function subredesText() {
             <li>Subredes ---> ${IPObj.numSubredes} </li>
             <li>Total de Hosts ---> ${IPObj.totalHosts} </li>
             <li>Saltos ---> ${IPObj.saltosText} </li>
+            <li> <strong> Nota: Si las cantidad de subredes son demasiadas, sólo se mostrarán las primeras 100k.</strong> </li>
         </ul>
     </ul>
     <p>&nbsp;</p>
