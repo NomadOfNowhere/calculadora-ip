@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // O la versión que necesites
+    "module": "commonjs", // O el sistema de módulos que estés utilizando
+    "rootDir": "./",
+    "outDir": "./", // El directorio de salida
+    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+    "strict": true, /* Enable all strict type-checking options. */
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./*.ts" // Incluir todos los archivos .ts en la carpeta models y subcarpetas
+  ],
+  "exclude": [
+    "**/*.spec.ts" // Excluir archivos de pruebas, si los tienes
+  ],
+}

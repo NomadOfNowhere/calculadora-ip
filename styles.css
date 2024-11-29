@@ -1,0 +1,85 @@
+:root {
+    --color-fondo: #79aea3;
+    --color-acento: #3C6E71;
+    --color-acento2: #b66f1d;
+    --color-destacado: #70AE6E;
+    --color-secundario: #BEEE62;
+    --color-blanco: #FFFFFF;
+    --color-texto: #333333;
+    --color-fondo2: #464259;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-fondo2);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+main {
+    margin: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 50px);
+}
+
+#formulario {
+    background-color: var(--color-blanco);
+    padding: 20px;
+    flex-grow: 0;
+}
+
+#opc {
+    background-color: var(--color-blanco);
+    padding-top: 20px;
+    display: none;
+}
+
+#caracteristicas {
+    background-color: var(--color-blanco);
+    padding: 20px;
+    margin-top: 15px;
+    flex-grow: 0;
+}
+
+h1 {
+    color: var(--color-acento);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+h4 {
+    color: var(--color-fondo2);
+    font-weight: bold;
+}
+
+#datos {
+    background-color: var(--color-blanco);
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 50px);
+    box-sizing: border-box;
+}
+
+.input-group-text {
+    background-color: var(--color-fondo);
+    color: var(--color-blanco);
+    font-weight: 600;
+}
+
+.btn-maroon {
+    background-color: var(--color-destacado);
+    color: var(--color-blanco);
+    font-weight: bold;
+    width: 50%;
+}
+
+.btn-maroon:hover {
+    background-color: var(--color-fondo);
+}
