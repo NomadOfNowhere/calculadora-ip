@@ -287,6 +287,7 @@ class DireccionIP {
     // Método para calcular los datos de cada subred generada en la opción (1) y (2)
     datosSubRedes() {
         let count = 0, aux = 0, aux1 = 0;
+        this.subredes = [];
         for (let i = 0; i < this.saltos * Math.pow(2, this.bitsAgregar) && this.subredes.length <= 100000; i += this.saltos) {
             // Clase A
             const auxIP = new DireccionIP(this.IP, this.bits + this.bitsAgregar);
